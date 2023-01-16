@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace eshop
 {
-    class Customer
+    class Customer//Въвеждане на клиент
     {
         public string Name { get; set; }
         public string Email { get; set; }
@@ -16,7 +16,7 @@ namespace eshop
         }
     }
 
-    class Administrator
+    class Administrator//Въвеждане на администратор
     {
         public string Name { get; set; }
         public string Email { get; set; }
@@ -28,14 +28,14 @@ namespace eshop
         }
     }
 
-    class Item
+    class Item //Стока
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int Stock { get; set; }
         public bool OutOfStock { get; set; }
 
-        public Item(string name, decimal price, int stock)
+        public Item(string name, decimal price, int stock) //Въвеждане на нова стока
         {
             Name = name;
             Price = price;
@@ -43,7 +43,7 @@ namespace eshop
             OutOfStock = false;
         }
 
-        public void UpdateStock(int newStock)
+        public void UpdateStock(int newStock) //Промяна на наличност на стока
         {
             Stock = newStock;
             if (Stock == 0)
@@ -53,23 +53,27 @@ namespace eshop
         }
     }
 
-    class Order
+    class Order // Поръчка
     {
         public Customer Customer { get; set; }
         public List <Item> Items { get; set; }
         public decimal TotalPrice { get; set; }
         public DateTime OrderDate { get; set; }
 
-        public Order(Customer customer, List<Item> items)
+        public Order(Customer customer, List<Item> items) // Оформяне на поръчка
         {
             Customer = customer;
             Items = items;
             TotalPrice = items.Sum (x => x.Price);
             OrderDate = DateTime.Now;
         }
+        Public Print (Customer, Items, TotalPrice, OrderDate) //Печатане на фактура
+        {
+            Console.WriteLine (""Your Invoice: " + Customer + Items + TotalPrice + OrderDate)
+        }
     }
 
-    class DeliveryGuy
+    class DeliveryGuy //Избор на доставчик
     {
         public string Name { get; set; }
         public List<Order> Orders { get; set; }
@@ -80,7 +84,7 @@ namespace eshop
             Orders = new List<Order>();
         }
 
-        public void AddOrder(Order order)
+        public void AddOrder(Order order) //Добавяне на поръчка за доставка
         {
             Orders.Add(order);
         } 
