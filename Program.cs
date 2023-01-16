@@ -83,6 +83,14 @@ namespace eshop
         public void AddOrder(Order order)
         {
             Orders.Add(order);
+        } 
+    }
+    Clas Program
+    {
+        Static void Main()
+        {
+        Console WriteLine ("Please enter an option!")
+        Console WriteLine ("1 - ")
         }
     }
 
